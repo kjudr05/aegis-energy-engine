@@ -18,7 +18,7 @@ Modern energy distribution networks are heavily dependent on volatile maritime t
 
 ## 🏗️ Platform Architecture
 
-![Aegis Core Platform Architecture Diagram](./assets/architecture-diagram.png)
+![Aegis Core Platform Architecture Diagram](./Gemini_Generated_Image_duatvdduatvdduat.png)
 
 The diagram above shows the full request/response lifecycle: the **Frontend UI Workspace** sends an HTTP POST JSON payload to the **FastAPI Gateway Router**, which hands off to the **AI Agentic Core** (LangChain LCEL + OpenAI GPT-4o) for reasoning and tool routing. Depending on the request, the core dispatches to either the **Adversarial Simulation Logic** tool (grid mitigation math, route cost re-indexing, SPR cover calculation) or the **Audit Log Inquiry** tool (contextual log scanning, reasoning transcript extraction). A **Fail-Safe Redundancy Track** with deterministic keyword-matching fallback logic and a local execution pipeline ensures the platform never freezes or crashes if the external LLM API times out. All decisions and audit transcripts are persisted to a **Global In-Memory State DB**, which synchronizes state back to the frontend for **real-time dashboard rendering**.
 
