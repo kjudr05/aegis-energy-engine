@@ -20,7 +20,15 @@ Modern energy distribution networks are heavily dependent on volatile maritime t
 
 ![Aegis Core Platform Architecture Diagram](./assets/Gemini_Generated_Image_duatvdduatvdduat.png)
 
-The diagram above shows the full request/response lifecycle: the **Frontend UI Workspace** sends an HTTP POST JSON payload to the **FastAPI Gateway Router**, which hands off to the **AI Agentic Core** (LangChain LCEL + OpenAI GPT-4o) for reasoning and tool routing. Depending on the request, the core dispatches to either the **Adversarial Simulation Logic** tool (grid mitigation math, route cost re-indexing, SPR cover calculation) or the **Audit Log Inquiry** tool (contextual log scanning, reasoning transcript extraction). A **Fail-Safe Redundancy Track** with deterministic keyword-matching fallback logic and a local execution pipeline ensures the platform never freezes or crashes if the external LLM API times out. All decisions and audit transcripts are persisted to a **Global In-Memory State DB**, which synchronizes state back to the frontend for **real-time dashboard rendering**.
+**Decoupled Multi-Tier System**: The architecture illustrates a highly efficient, linear flow separating the interactive Next.js 16 frontend user interface from the specialized Python FastAPI backend gateway.
+
+**Structured Data Exchange**: State updates travel instantly from the frontend client down to the backend server over port 8000 using standard, lightweight HTTP POST JSON payloads.
+
+**Agentic Intelligence Core**: At the center sits a unified LangChain LCEL wrapper bound to OpenAI, which evaluates user queries to dynamically orchestrate system logic.
+
+**Conditional Operational Branching**: Using advanced function tool calling, the agent acts as an automated router, intelligently splitting execution paths based on user intent.
+
+**Dual-Threat Functional Execution**: The request triggers either Tool A (Simulation Engine) to calculate network risks, routing costs, and SPR levels, or Tool B (Audit Logger) to scan memory states and extract detailed reasoning logs..
 
 ---
 
