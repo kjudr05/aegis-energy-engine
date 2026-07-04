@@ -1,0 +1,65 @@
+{
+  "refineries": {
+    "Jamnagar_Refinery": {
+      "name": "Jamnagar Refinery (Reliance)",
+      "location": [22.4704, 70.0577],
+      "max_sulfur_pct": 1.5,
+      "min_api_gravity": 28.0,
+      "current_processing_rate_barrels_day": 1200000
+    },
+    "Paradip_Refinery": {
+      "name": "Paradip Refinery (IOCL)",
+      "location": [20.2778, 86.6667],
+      "max_sulfur_pct": 2.1,
+      "min_api_gravity": 22.0,
+      "current_processing_rate_barrels_day": 300000
+    }
+  },
+  "shipping_network": {
+    "nodes": [
+      {"id": "Ras_Tanura", "type": "wellhead", "country": "Saudi Arabia"},
+      {"id": "Basra", "type": "wellhead", "country": "Iraq"},
+      {"id": "Strait_of_Hormuz", "type": "chokepoint", "base_risk": 0.1},
+      {"id": "Red_Sea", "type": "chokepoint", "base_risk": 0.2},
+      {"id": "Arabian_Sea", "type": "transit_zone", "base_risk": 0.05},
+      {"id": "Cape_of_Good_Hope", "type": "transit_zone", "base_risk": 0.01},
+      {"id": "Jamnagar_Port", "type": "destination", "refinery_connected": "Jamnagar_Refinery"},
+      {"id": "Paradip_Port", "type": "destination", "refinery_connected": "Paradip_Refinery"}
+    ],
+    "edges": [
+      {"source": "Ras_Tanura", "target": "Strait_of_Hormuz", "distance_miles": 150},
+      {"source": "Basra", "target": "Strait_of_Hormuz", "distance_miles": 350},
+      {"source": "Strait_of_Hormuz", "target": "Arabian_Sea", "distance_miles": 600},
+      {"source": "Arabian_Sea", "target": "Jamnagar_Port", "distance_miles": 450},
+      {"source": "Ras_Tanura", "target": "Red_Sea", "distance_miles": 1200},
+      {"source": "Red_Sea", "target": "Cape_of_Good_Hope", "distance_miles": 5400},
+      {"source": "Cape_of_Good_Hope", "target": "Paradip_Port", "distance_miles": 6800}
+    ]
+  },
+  "alternative_suppliers": [
+    {
+      "name": "Nemba_Crude_Field",
+      "sulfur_content": 0.42,
+      "api_gravity": 32.1,
+      "cost_per_barrel": 78.50,
+      "max_capacity_barrels": 12000.0,
+      "fixed_contract_activation_fee": 35000.0
+    },
+    {
+      "name": "Sokol_Sourcing_Hub",
+      "sulfur_content": 0.28,
+      "api_gravity": 35.6,
+      "cost_per_barrel": 84.20,
+      "max_capacity_barrels": 8000.0,
+      "fixed_contract_activation_fee": 15000.0
+    },
+    {
+      "name": "Basrah_Heavy_Reserve",
+      "sulfur_content": 2.10,
+      "api_gravity": 24.0,
+      "cost_per_barrel": 62.00,
+      "max_capacity_barrels": 20000.0,
+      "fixed_contract_activation_fee": 90000.0
+    }
+  ]
+}
